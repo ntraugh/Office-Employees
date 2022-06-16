@@ -31,17 +31,17 @@ describe("Employee", () => {
     it ("should be able to get the ID from the newId function", () => { 
         const id = "5"
         const employee = new Employee("Nate", id)
-        expect(employee.newId().toBe(id))
+        expect(employee.newId()).toBe(id)
     })
     it("should be able to get the email from the newEmail function", () => {
         const email = "ntraugh@yahoo.com"
         const employee = new Employee("Nate", 1, email)
-        expect(employee.newEmail().toBe(email))
+        expect(employee.newEmail()).toBe(email)
     })
     it("should be able to get position from the newPosition function", () => {
         const position = "Employee"
         const employee = new Employee("Nate", 1, "ntraugh@yahoo.com")
-        expect(employee.newPosition().toBe(position))
+        expect(employee.newPosition()).toBe(position)
     })
 })
 
