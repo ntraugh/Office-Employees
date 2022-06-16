@@ -1,5 +1,6 @@
 const fs = require("fs")
 const inquirer = require("inquirer")
+const generateHTML = require("./utils/generateHTML.js")
 
 
 // checking to see if the user actually input anything into the question, will run this with every question
@@ -42,10 +43,20 @@ const questions = [
     }, 
 ]
 
+
+// creating the function to write the html to the output folder
+function writeToFile(fileName, data){
+    fs.writeFile(fileName, generateHTML(data), function(err) {
+        if (err){
+            return console.log(err)
+        }
+    })
+}
+
 // creating the function to initialize the prompt
 function init() {
     inquirer.prompt(questions).then((data) => {
-        console.log(data)
+        writeToFile("./output/index.html", data)
     });
 }
 
