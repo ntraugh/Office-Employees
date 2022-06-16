@@ -1,4 +1,4 @@
-const generateHTML = function () {
+const generateHTML = function (data) {
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -6,7 +6,17 @@ const generateHTML = function () {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./output/styles.css">
+        <style>
+        .jumbotron h1 {
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        
+        .card {
+            margin-bottom: 40px;
+        }
+        </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <title>Office Employees </title>
@@ -23,8 +33,8 @@ const generateHTML = function () {
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4">
                     <div class="card mb-3 rounded shadow-lg">
                         <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">Nate</h5>
-                            <h5 class="text-left text-white">Manager</h5>
+                            <h5 class="text-left text-white">${data.name}</h5>
+                            <h5 class="text-left text-white">${data.position}</h5>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
