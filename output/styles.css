@@ -1,0 +1,9 @@
+.jumbotron h1 {
+    text-align: center;
+    padding: 50px;
+    color: white;
+}
+
+.card {
+    margin-bottom: 40px;
+}
