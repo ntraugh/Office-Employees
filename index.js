@@ -41,3 +41,12 @@ const questions = [
         ]
     }, 
 ]
+
+// creating the function to initialize the prompt
+function init() {
+    inquirer.prompt(questions).then((data) => {
+        console.log(data)
+    });
+}
+
+init()
