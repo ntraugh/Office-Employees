@@ -17,6 +17,35 @@ const checkInput = function (value) {
     }
 }
 
+// creating the question that the user comes back to after they selected the worker
+function rerunQuestion () {
+    inquirer.prompt([{
+        type: "list",
+        message: "Add another employee to the office?",
+        name: "addEmployee",
+        choices: [
+            "Engineer",
+            "Intern",
+            "My team is complete"
+        ]
+        // creating a switch case to determine which input the user selected and running that block of code
+    }]).then(function(input){
+        switch(input.addEmployee){
+            case "Engineer": 
+            // need to create an engineer questions prompt, as well as intern
+                engineerQuestions()
+                break;
+            case "Intern":
+                internQuestions()
+                break;
+            default:
+                writeToFile();
+
+        }
+    })
+
+}
+
 function managerQuestions ()  {
     inquirer.prompt([
     {
@@ -46,7 +75,8 @@ function managerQuestions ()  {
 ]).then(data => {
     const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice)
     newTeam.push(manager)
-
+    rerunQuestion(); 
+    console.log(newTeam)
 
 })
 }
@@ -63,12 +93,11 @@ function writeToFile(fileName, data){
 }
 
 managerQuestions(); 
-writeToFile("./output/index.html", data);
 
 // creating the function to initialize the prompt
 // function init() {
 //     inquirer.prompt(questions).then((data) => {
-//         writeToFile("./output/index.html", data)
+//         writeToFile("./output/index.html", data) NEED TO RUN THIS AFTER ALLLLLL THE INFORMATION IS GATHERED
 //     });
 // }
 
