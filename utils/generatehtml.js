@@ -34,13 +34,13 @@ const generateHTML = function (data) {
                     <div class="card mb-3 rounded shadow-lg">
                         <div class="card-header bg-primary">
                             <h5 class="text-left text-white">${data.name}</h5>
-                            <h5 class="text-left text-white">${data.position}</h5>
+                            <h5 class="text-left text-white">Manager</h5>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID:</li>
-                                <li class="list-group-item">Email: <a href="mailto:n.traugh@yahoo.com"></a></li>
-                                <li class="list-group-item">Office Number: </li>
+                                <li class="list-group-item">ID: ${data.id}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${data.Email}"></a>${data.Email}</li>
+                                <li class="list-group-item">Office Number: ${data.office} </li>
                             </ul>
                         </div>
                     </div>
