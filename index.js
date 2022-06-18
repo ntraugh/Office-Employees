@@ -4,6 +4,7 @@ const generateHTML = require("./utils/generateHTML.js")
 const Intern = require("./lib/intern.js")
 const Engineer = require("./lib/engineer.js")
 const Manager = require("./lib/manager.js")
+// bringing in the makeTeam function from our generateHTML file
 const makeTeam = require("./utils/generateHTML.js")
 // had to bring in path and use writeFileSync in order to get the output onto the new index.html
 const path = require("path")
