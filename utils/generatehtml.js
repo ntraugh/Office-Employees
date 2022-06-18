@@ -1,4 +1,62 @@
-const generateHTML = function (data) {
+
+
+
+
+const makeTeam = employees => {
+    const makeManager = manager => {
+        return ` <div class="col-md-4 col-sm-6 col-12 col-lg-4">
+        <div class="card mb-3 rounded shadow-lg">
+            <div class="card-header bg-primary">
+                <h5 class="text-left text-white">${manager.newName()}</h5>
+                <h5 class="text-left text-white">Manager</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${manager.newId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${manager.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Office Number: ${manager.officeNumber()} </li>
+                </ul>
+            </div>
+        </div>
+    </div>`
+    }
+    const makeEngineer = engineer => {
+        return ` <div class="col-md-4 col-sm-6 col-12 col-lg-4">
+        <div class="card mb-3 rounded shadow-lg">
+            <div class="card-header bg-primary">
+                <h5 class="text-left text-white">${engineer.newName()}</h5>
+                <h5 class="text-left text-white">Manager</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${engineer.newId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${engineer.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Office Number: ${engineer.newGithub()} </li>
+                </ul>
+            </div>
+        </div>
+    </div>`
+    }
+    const makeIntern = intern => {
+        return ` <div class="col-md-4 col-sm-6 col-12 col-lg-4">
+        <div class="card mb-3 rounded shadow-lg">
+            <div class="card-header bg-primary">
+                <h5 class="text-left text-white">${intern.newName()}</h5>
+                <h5 class="text-left text-white">Manager</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${intern.newId()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${intern.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Office Number: ${intern.newSchool()} </li>
+                </ul>
+            </div>
+        </div>
+    </div>`
+    }
+}
+
+const generateHTML = function (employee) {
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -29,82 +87,11 @@ const generateHTML = function (data) {
             </div>
         </div>
         <div class="container mt-5">
-            <div class="row">
+            <div class="row"
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4">
-                    <div class="card mb-3 rounded shadow-lg">
-                        <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">${data.name}</h5>
-                            <h5 class="text-left text-white">Manager</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID: ${data.id}</li>
-                                <li class="list-group-item">Email: <a href="mailto:${data.Email}"></a>${data.Email}</li>
-                                <li class="list-group-item">Office Number: ${data.office} </li>
-                            </ul>
-                        </div>
-                    </div>
+                    ${makeTeam(employees)}
                 </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4">
-                    <div class="card mb-3 rounded shadow-lg">
-                        <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">Nate</h5>
-                            <h5 class="text-left text-white">Engineer</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID:</li>
-                                <li class="list-group-item">Email: <a href="mailto:n.traugh@yahoo.com"></a></li>
-                                <li class="list-group-item">GitHub: <a href="https://github.com/ntraugh"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4">
-                    <div class="card mb-3 rounded shadow-lg">
-                        <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">Nate</h5>
-                            <h5 class="text-left text-white">Engineer</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID:</li>
-                                <li class="list-group-item">Email: <a href="mailto:n.traugh@yahoo.com"></a></li>
-                                <li class="list-group-item">GitHub: <a href="https://github.com/ntraugh"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4  justify-content-center">
-                    <div class="card mb-3 rounded shadow-lg">
-                        <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">Nate</h5>
-                            <h5 class="text-left text-white">Intern</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID:</li>
-                                <li class="list-group-item">Email: <a href="mailto:n.traugh@yahoo.com"></a></li>
-                                <li class="list-group-item">School: </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-12 col-lg-4  justify-content-center">
-                    <div class="card mb-3 rounded shadow-lg">
-                        <div class="card-header bg-primary">
-                            <h5 class="text-left text-white">Nate</h5>
-                            <h5 class="text-left text-white">Intern</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID:</li>
-                                <li class="list-group-item">Email: <a href="mailto:n.traugh@yahoo.com"></a></li>
-                                <li class="list-group-item">School: </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     

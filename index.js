@@ -39,6 +39,7 @@ function rerunQuestion () {
                 internQuestions()
                 break;
             default:
+                // if they choose the option that they are done we want to print the html file
                 writeToFile();
 
         }
@@ -72,20 +73,97 @@ function managerQuestions ()  {
         message: "What is the managers office number?",
        
     }, 
-]).then(data => {
+
+
+    ]).then(data => {
     const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice)
     newTeam.push(manager)
     rerunQuestion(); 
     console.log(newTeam)
 
-})
+    })
 }
+
+function engineerQuestions ()  {
+    inquirer.prompt([
+    {
+        type: "input",
+        name: "engineerName",
+        message: "Enter the engineers name.",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "engineerEmail",
+        message: "What is the engineers email?",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "engineerId",
+        message: "What is the engineers ID?",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "engineerUser",
+        message: "What is the engineer GitHub username??",
+       
+    }, 
+
+
+    ]).then(data => {
+    const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerUser)
+    newTeam.push(engineer)
+    rerunQuestion(); 
+    console.log(newTeam)
+
+    })
+}
+
+function internQuestions ()  {
+    inquirer.prompt([
+    {
+        type: "input",
+        name: "internName",
+        message: "Enter the interns name.",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "internEmail",
+        message: "What is the interns email?",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "internId",
+        message: "What is the interns ID?",
+        validate: checkInput
+    }, 
+    {
+        type: "input",
+        name: "internSchool",
+        message: "What is the interns school?",
+       
+    }, 
+
+
+    ]).then(data => {
+    const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
+    newTeam.push(intern)
+    rerunQuestion(); 
+    console.log(newTeam)
+
+    })
+}
+
 
 
 
 // creating the function to write the html to the output folder
 function writeToFile(fileName, data){
-    fs.writeFile(fileName, generateHTML(data), function(err) {
+    fs.writeFile(fileName, generateHTML(newTeam), function(err) {
         if (err){
             return console.log(err)
         }
