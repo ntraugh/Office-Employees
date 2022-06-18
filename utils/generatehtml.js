@@ -10,7 +10,7 @@ const makeTeam = team => {
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${manager.newId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${manager.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${manager.newEmail()}">${manager.newEmail()}</a></li>
                     <li class="list-group-item">Office Number: ${manager.officeNumber()} </li>
                 </ul>
             </div>
@@ -27,8 +27,8 @@ const makeTeam = team => {
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${engineer.newId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${engineer.newEmail()}"></a>${engineer.newEmail()}</li>
-                    <li class="list-group-item">GitHub: ${engineer.newGithub()} </li>
+                    <li class="list-group-item">Email: <a href="mailto:${engineer.newEmail()}">${engineer.newEmail()}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.newGithub()}" target="_blank">${engineer.newGithub()}</a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@ const makeTeam = team => {
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${intern.newId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${intern.newEmail()}"></a>${intern.newEmail()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${intern.newEmail()}">${intern.newEmail()}</a></li>
                     <li class="list-group-item">School: ${intern.newSchool()} </li>
                 </ul>
             </div>
