@@ -54,7 +54,7 @@ const makeTeam = team => {
     // adding map and filter methods since for loop was giving issues
     const newHTML = []
     newHTML.push(team
-        .filter(employee => employee.newPosition() === "Manager")
+        .filter(employee => employee.newPosition() === "Manager") // if they choose manager then we run the makeManager function and pass in the name
         .map(manager => makeManager(manager))
     );
     newHTML.push(team
@@ -71,6 +71,7 @@ const makeTeam = team => {
 }
 
 
+// only need to export this part of the HTML because we are passing in our makeTeam function in the body
 module.exports = generateHTML => {
     return `<!DOCTYPE html>
     <html lang="en">

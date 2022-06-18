@@ -175,11 +175,3 @@ function createNewHTML (){
 
 managerQuestions(); 
 
-// creating the function to initialize the prompt
-// function init() {
-//     inquirer.prompt(questions).then((data) => {
-//         writeToFile("./output/index.html", data) NEED TO RUN THIS AFTER ALLLLLL THE INFORMATION IS GATHERED
-//     });
-// }
-
-// init()
