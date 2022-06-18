@@ -1,8 +1,5 @@
 
-
-
-
-const makeTeam = employees => {
+const makeTeam = team => {
     const makeManager = manager => {
         return ` <div class="col-md-4 col-sm-6 col-12 col-lg-4">
         <div class="card mb-3 rounded shadow-lg">
@@ -30,7 +27,7 @@ const makeTeam = employees => {
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${engineer.newId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${engineer.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${engineer.newEmail()}"></a>${engineer.newEmail()}</li>
                     <li class="list-group-item">Office Number: ${engineer.newGithub()} </li>
                 </ul>
             </div>
@@ -47,16 +44,34 @@ const makeTeam = employees => {
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${intern.newId()}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${intern.newEmail()}"></a>${manager.newEmail()}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${intern.newEmail()}"></a>${intern.newEmail()}</li>
                     <li class="list-group-item">Office Number: ${intern.newSchool()} </li>
                 </ul>
             </div>
         </div>
     </div>`
     }
+    // adding map and filter methods since for loop was giving issues
+    const newHTML = []
+    newHTML.push(team
+        .filter(employee => employee.newPosition() === "Manager")
+        .map(manager => makeManager(manager))
+    );
+    newHTML.push(team
+        .filter(employee => employee.newPosition() === "Engineer")
+        .map(engineer => makeEngineer(engineer))
+        .join("")
+    );
+    newHTML.push(team
+        .filter(employee => employee.newPosition() === "Intern")
+        .map(intern => makeIntern(intern))
+        .join("")
+    );
+    return newHTML.join("")
 }
 
-const generateHTML = function (employee) {
+
+module.exports = generateHTML => {
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -89,7 +104,7 @@ const generateHTML = function (employee) {
         <div class="container mt-5">
             <div class="row"
                 <div class="col-md-4 col-sm-6 col-12 col-lg-4">
-                    ${makeTeam(employees)}
+                    ${makeTeam(generateHTML)}
                 </div>
                 
             </div>
@@ -100,5 +115,3 @@ const generateHTML = function (employee) {
     </html>`
 
 } // this is where the HTML will go
-
-module.exports = generateHTML;

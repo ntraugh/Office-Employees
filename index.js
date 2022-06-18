@@ -4,6 +4,12 @@ const generateHTML = require("./utils/generateHTML.js")
 const Intern = require("./lib/intern.js")
 const Engineer = require("./lib/engineer.js")
 const Manager = require("./lib/manager.js")
+const makeTeam = require("./utils/generateHTML.js")
+// had to bring in path and use writeFileSync in order to get the output onto the new index.html
+const path = require("path")
+const OUTPUT_DIR = path.resolve(__dirname, "output")
+const newPath = path.join(OUTPUT_DIR, "index.html")
+
 
 
 newTeam = []
@@ -40,7 +46,7 @@ function rerunQuestion () {
                 break;
             default:
                 // if they choose the option that they are done we want to print the html file
-                writeToFile();
+                createNewHTML();
 
         }
     })
@@ -79,7 +85,7 @@ function managerQuestions ()  {
     const manager = new Manager(data.managerName, data.managerId, data.managerEmail, data.managerOffice)
     newTeam.push(manager)
     rerunQuestion(); 
-    console.log(newTeam)
+    // console.log(newTeam)
 
     })
 }
@@ -116,7 +122,7 @@ function engineerQuestions ()  {
     const engineer = new Engineer(data.engineerName, data.engineerId, data.engineerEmail, data.engineerUser)
     newTeam.push(engineer)
     rerunQuestion(); 
-    console.log(newTeam)
+    // console.log(newTeam)
 
     })
 }
@@ -153,7 +159,7 @@ function internQuestions ()  {
     const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
     newTeam.push(intern)
     rerunQuestion(); 
-    console.log(newTeam)
+    // console.log(newTeam)
 
     })
 }
@@ -162,12 +168,8 @@ function internQuestions ()  {
 
 
 // creating the function to write the html to the output folder
-function writeToFile(fileName, data){
-    fs.writeFile(fileName, generateHTML(newTeam), function(err) {
-        if (err){
-            return console.log(err)
-        }
-    })
+function createNewHTML (){
+    fs.writeFileSync(newPath, makeTeam(newTeam), "utf-8")
 }
 
 managerQuestions(); 
